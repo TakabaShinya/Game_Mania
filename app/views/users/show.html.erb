@@ -9,8 +9,8 @@
           <thead>
             <tr>
               <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
+              <th>ゲーム名</th>
+              <th>ゲーム内容</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -23,7 +23,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to "#{game.title}", book_path(game.id) %>
+                  <%= link_to "#{game.title}", game_path(game.id) %>
                 </td>
                 <td><%= game.body %></td>
               </tr>
