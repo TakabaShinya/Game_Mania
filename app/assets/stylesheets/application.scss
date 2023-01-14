@@ -17,6 +17,14 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 .jumbotron {
-  background-image: url(images/sam-pak-X6QffKLwyoQ-unsplash.jpg);
-  background-size: contain;
+  height: 630px;
+  background-image: url(sam-pak-X6QffKLwyoQ-unsplash.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.back {
+  background-color: #fffff;
 }

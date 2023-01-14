@@ -1,39 +1,38 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>ユーザー情報</h1>
-      <% if @user.errors.any? %>
-        <%= @user.errors.count %>error prohibited this obj from being saved:
-        <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+        <h5 class="text-dark bg-light py-4 mb-0">プロフィール編集</h5>
+        <% if @user.errors.any? %>
+          <%= @user.errors.count %>error prohibited this obj from being saved:
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
-        </ul>
-      <% end %>
-      <%= form_with model:@user, local:true do |f| %>
-        <div>
-          <label for="inputName">Name</label>
-        </div>
-        <div>
-          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name" %>
-        </div>
-        <div>
-          <label for="inputImage">ProfileImage</label>
-        </div>
-        <div>
-          <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg" %>
-        </div> 
-        <div>
-          <label for="inputBody">Introduction</label>
-        </div>
-        <div>
-          <%= f.text_area :introduction, autofocus: true, id:"inputBody", placeholder:"introduction" %>
-        </div>
-        <div>
-          <%= f.submit "Update User", class:"btn btn-success" %>
-        </div>
-      <% end %>
+        <%= form_with model:@user, local:true do |f| %>
+          <div class="input-group bg-light mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :name, autofocus: true, class:"form-control",id:"inputName", placeholder:"名前" %>
+          </div>
+          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg", class:"mb-3" %>
+          <div class="input-group bg-light my-3">
+            <label>
+              <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+            </label>
+          </div>
+          <div class="input-group bg-light mb-3">
+            <span class="input-group-text">自己紹介</span>
+            <%= f.text_area :introduction, autofocus: true, class:"form-control", id:"inputBody", placeholder:"自己紹介をここに記入" %>
+          </div>
+          <div>
+            <%= f.submit "変更を保存", class:"btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
