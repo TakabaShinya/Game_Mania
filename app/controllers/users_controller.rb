@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @game = Game.new
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
     @game = Game.new
-    @games = @user.games
+    @games = @user.games.page(params[:page]).reverse_order
   end
 
   def edit

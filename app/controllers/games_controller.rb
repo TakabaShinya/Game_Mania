@@ -2,12 +2,12 @@ class GamesController < ApplicationController
   def index
     @user = current_user
     @game = Game.new
-    @games = Game.all
+    @games = Game.page(params[:page]).reverse_order
   end
 
   def create
     @user = current_user
-    @games = Game.all
+    @games = Game.page(params[:page]).reverse_order
     @game = Game.new(game_params)
     @game.user_id = current_user.id
     if @game.save
@@ -33,6 +33,6 @@ class GamesController < ApplicationController
   private
   
   def game_params
-    params.require(:game).permit(:title, :body, :user_id)
+    params.require(:game).permit(:title, :hard, :game_image, :body, :user_id)
   end
 end

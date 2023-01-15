@@ -9,7 +9,7 @@
             <th><%= user.name %></th>
           </tr>
           <tr>
-            <th>自己紹介</th>
+            <th>自己<br>紹介</th>
             <th><%= user.introduction %></th>
           </tr>
         </table>　 
@@ -23,6 +23,15 @@
           <div class="form-group">
             <label for="game_title">ゲーム名</label>
             <%= f.text_field :title %>
+          </div>
+          <div class="form-group">
+            <label for="game_hard">ゲーム機種</label>
+            <%= f.text_field :hard %>
+          </div>
+          <div class="form-group">
+            <label>ゲーム画像
+              <%= f.attachment_field :game_image, placeholder: "ゲーム画像" %>
+            </label>
           </div>
           <div class="form-group">
             <label for="game_body">ゲーム説明</label>

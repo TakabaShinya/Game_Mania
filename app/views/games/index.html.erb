@@ -18,6 +18,8 @@
             <tr>
               <th></th>
               <th>ゲーム名</th>
+              <th>ゲーム機種</th>
+              <th>ゲーム画像</th>
               <th>ゲーム内容</th>
               <th colspan="3"></th>
             </tr>
@@ -33,11 +35,18 @@
                 <td>
                   <%= link_to "#{game.title}", game_path(game.id) %>
                 </td>
+                <td><%= game.hard %></td>
+                <td>
+                  <%= link_to game_path(game.id) do %>
+                    <%= attachment_image_tag game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg" %>
+                  <% end %>
+                </td>
                 <td><%= game.body %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <%= paginate @games %>
       </div>
     </div>
   </div>

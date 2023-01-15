@@ -3,35 +3,37 @@
     <div class="row no-gutters">
       <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
         <h5 class="text-dark bg-light py-4 mb-0">プロフィール編集</h5>
-        <% if @user.errors.any? %>
-          <%= @user.errors.count %>error prohibited this obj from being saved:
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-        <%= form_with model:@user, local:true do |f| %>
-          <div class="input-group bg-light mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+        <div class="form-body bg-light p-4">
+          <% if @user.errors.any? %>
+            <%= @user.errors.count %>error prohibited this obj from being saved:
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <%= form_with model:@user, local:true do |f| %>
+            <div class="input-group bg-light mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+              </div>
+              <%= f.text_field :name, autofocus: true, class:"form-control",id:"inputName", placeholder:"名前" %>
             </div>
-            <%= f.text_field :name, autofocus: true, class:"form-control",id:"inputName", placeholder:"名前" %>
-          </div>
-          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg", class:"mb-3" %>
-          <div class="input-group bg-light my-3">
-            <label>
-              <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-            </label>
-          </div>
-          <div class="input-group bg-light mb-3">
-            <span class="input-group-text">自己紹介</span>
-            <%= f.text_area :introduction, autofocus: true, class:"form-control", id:"inputBody", placeholder:"自己紹介をここに記入" %>
-          </div>
-          <div>
-            <%= f.submit "変更を保存", class:"btn btn-success" %>
-          </div>
-        <% end %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:"no_image.jpg", class:"mb-3" %>
+            <div class="input-group bg-light my-3">
+              <label>
+                <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+              </label>
+            </div>
+            <div class="input-group bg-light mb-3">
+              <span class="input-group-text">自己紹介</span>
+              <%= f.text_area :introduction, autofocus: true, class:"form-control", id:"inputBody", placeholder:"自己紹介をここに記入" %>
+            </div>
+            <div>
+              <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-info mt-5" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
