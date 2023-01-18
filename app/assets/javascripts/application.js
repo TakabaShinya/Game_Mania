@@ -17,3 +17,26 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+function pushHideButton() {
+  var txtPass = document.getElementById("inputPassword");
+  var btnEye = document.getElementById("buttonEye");
+  if (txtPass.type === "text") {
+    txtPass.type = "password";
+    btnEye.className = "fa fa-eye-slash my-auto";
+  } else {
+    txtPass.type = "text";
+    btnEye.className = "fa fa-eye my-auto";
+  }
+}
+
+function pushHideButton2() {
+  var txtPass = document.getElementById("inputConfirmPassword");
+  var btnEye = document.getElementById("buttonEye");
+  if (txtPass.type === "text") {
+    txtPass.type = "password";
+    btnEye.className = "fa fa-eye-slash my-auto";
+  } else {
+    txtPass.type = "text";
+    btnEye.className = "fa fa-eye my-auto";
+  }
+}

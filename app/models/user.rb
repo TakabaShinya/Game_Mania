@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :games, dependent: :destroy
+  has_many :game_comments, dependent: :destroy
   validates :name, length: {in: 2..20}
   validates :introduction, length: {maximum: 50}
 end
