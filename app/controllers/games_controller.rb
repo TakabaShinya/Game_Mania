@@ -22,6 +22,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @user = @game.user
     @game_new = Game.new
+    @game_comment = GameComment.new
   end
 
   def destroy

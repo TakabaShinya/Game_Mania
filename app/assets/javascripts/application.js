@@ -31,7 +31,7 @@ function pushHideButton() {
 
 function pushHideButton2() {
   var txtPass = document.getElementById("inputConfirmPassword");
-  var btnEye = document.getElementById("buttonEye");
+  var btnEye = document.getElementById("buttonEye2");
   if (txtPass.type === "text") {
     txtPass.type = "password";
     btnEye.className = "fa fa-eye-slash my-auto";
