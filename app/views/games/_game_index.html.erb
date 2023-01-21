@@ -1,0 +1,48 @@
+        <h2>投稿一覧</h2>
+        <table>
+          <tbody>
+            <% games.each do |game| %>
+              <tr>
+                <td>
+                  <%= link_to game_path(game.id) do %>
+                    <%= attachment_image_tag game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg" %>
+                  <% end %>
+                  <span>
+                    ゲーム名：<%= link_to "#{game.title}", game_path(game.id) %><br>
+                    ゲーム機種：<%= game.hard %>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  【ゲーム説明】<br>
+                  <%= game.body %>
+                </td>
+              </tr>
+              <tr>
+                <span>
+                  <%= link_to user_path(game.user.id) do %>
+                    <%= attachment_image_tag game.user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg" %>
+                    By <%= game.user.name %> ｜
+                  <% end %>
+                </span>
+                <span><%= link_to "#{game.game_comments.count} コメント", game_path(game.id) %> ｜</span>
+                <% if game.favorited_by?(current_user) %>
+                  <span>
+                    <%= link_to game_favorites_path(game), method: :delete do %>
+                      ♥<%= game.favorites.count %> いいね
+                    <% end %>
+                  </span>
+                <% else %>
+                  <span>
+                    <%= link_to game_favorites_path(game), method: :post do %>
+                      ♡<%= game.favorites.count %> いいね
+                    <% end %>
+                  </span>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table> 
+        <%= paginate games %>
+        
