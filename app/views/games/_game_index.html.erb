@@ -1,25 +1,23 @@
         <h2>投稿一覧</h2>
-        <table>
-          <tbody>
-            <% games.each do |game| %>
-              <tr>
-                <td>
+        <div class="card-list-container mx-auto pb-5">
+          <% games.each do |game| %>
+            <div class="card mb-4 shadow-lg">
+              <div class="game-item">
+                <div>
                   <%= link_to game_path(game.id) do %>
-                    <%= attachment_image_tag game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg" %>
+                    <%= attachment_image_tag game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg", class:"w-200 ml-0 border-radius utilities img-thumbnail" %>
                   <% end %>
-                  <span>
-                    ゲーム名：<%= link_to "#{game.title}", game_path(game.id) %><br>
-                    ゲーム機種：<%= game.hard %>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+                <div class="game-title">
+                  ゲーム名：<%= link_to "#{game.title}", game_path(game.id) %><br>
+                  ゲーム機種：<%= game.hard %>
+                </div>
+              </div>
+              <div class="card-body pl-0 pb-0">
+                <div class="game-body">
                   【ゲーム説明】<br>
                   <%= game.body %>
-                </td>
-              </tr>
-              <tr>
+                </div>
                 <span>
                   <%= link_to user_path(game.user.id) do %>
                     <%= attachment_image_tag game.user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg" %>
@@ -40,9 +38,9 @@
                     <% end %>
                   </span>
                 <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table> 
+              </div>
+            </div>
+          <% end %>
+        </div>
         <%= paginate games %>
-        
+       

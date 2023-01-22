@@ -24,3 +24,16 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
+.game-item {
+  display: flex;
+}
+
+.game-title {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.game-body {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,24 @@
+      <div class='col-md-3'>
+        <h2>ユーザー情報</h2>
+        <table class='table'>
+          <tr>
+            <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: "jpeg", fallback: "no_image.jpg" %>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>
+              自己<br>
+              紹介
+            </th>
+            <th><%= user.introduction %></th>
+          </tr>
+        </table>　 
+        <div class='row'>
+          <a class="btn btn-outline-secondary btn-block" href="/users/<%= user.id %>/edit">
+            <i class="fas fa-user-cog"></i>
+          </a>
+        </div>
+      </div>
