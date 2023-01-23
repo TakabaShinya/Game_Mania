@@ -5,72 +5,79 @@
       <%= render "users/user_info2", user: @user, game: @game_new %>
       <div class='col-md-8 offset-md-1'>
         <h2>投稿詳細及びコメント</h2>
-        <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>ゲーム名</th>
-              <th>ゲーム機種</th>
-              <th>ゲーム画像</th>
-              <th>ゲーム内容</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to user_path(@game.user.id) do %>
-                  <%= attachment_image_tag @game.user, :profile_image, :fill, 100, 100, format: "jpeg", fallback: "no_image.jpg" %><br>
-                  <%= @game.user.name %>
-                <% end %>
-              </td>
-              <td><%= @game.title %></td>
-              <td><%= @game.hard %></td>
-              <td>
-                <%= link_to game_path(@game.id) do %>
-                  <%= attachment_image_tag @game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg" %>
-                <% end %>
-              </td>
-              <td><%= @game.body %></td>
-              <td>
-                <% if @game.favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to game_favorites_path(@game), method: :delete do %>
-                      ♥<%= @game.favorites.count %> いいね
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to game_favorites_path(@game), method: :post do %>
-                      ♡<%= @game.favorites.count %> いいね
-                    <% end %>
-                  </p>
-                <% end %>
-              </td>
-              <% if @game.user.id == current_user.id %>
-                <td><%= link_to "削除", game_path(@game.id), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？" %></td>
+        <div class="card mb-4 shadow-lg">
+          <div class="game-item">
+            <div>
+              <%= link_to user_path(@game.user.id) do %>
+                <%= attachment_image_tag @game.user, :profile_image, :fill, 100, 100, format: "jpeg", fallback: "no_image.jpg" %><br>
+                <%= @game.user.name %>
               <% end %>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <p>【コメント件数：<%= @game.game_comments.count %>】</p>
-          <% @game.game_comments.each do |game_comment| %>
-            <%= attachment_image_tag game_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-            <%= game_comment.user.name %>
-            <%= game_comment.comment %>
-            <% if game_comment.user == current_user %>
-              <div>
-                <%= link_to "削除", game_game_comment_path(game_comment.game, game_comment), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？"  %>
-              </div>
+            </div>
+            <div>
+              <%= link_to game_path(@game.id) do %>
+                <%= attachment_image_tag @game, :game_image, :fill, 100, 100, format: "jpeg", fallback: "default-image.jpg", class:"w-200 ml-0 border-radius utilities img-thumbnail" %>
+              <% end %>
+            </div>
+            <div class="game-title">
+              ゲーム名：<%= @game.title %><br>
+              ゲーム機種：<%= @game.hard %>
+            </div>
+          </div>
+          <div class="card-body pl-0 pb-0">
+            <div class="game-body">
+              【ゲーム説明】<br>
+              <%= @game.body %>
+            </div>
+            <div class="game-body">
+              <% if @game.user.id == current_user.id %>
+                <%= link_to "投稿削除", game_path(@game.id), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？" %>
+              <% end %>
+            </div>
+            <% if @game.favorited_by?(current_user) %>
+              <span>
+                <%= link_to game_favorites_path(@game), method: :delete do %>
+                  ♥<%= @game.favorites.count %> いいね
+                <% end %>
+              </span>
+            <% else %>
+              <span>
+                <%= link_to game_favorites_path(@game), method: :post do %>
+                  ♡<%= @game.favorites.count %> いいね
+                <% end %>
+              </span>
             <% end %>
-          <% end %>
-        </div>
-        <div>
-          <%= form_with(model:[@game, @game_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
+          </div>
+          <hr>
+      　　<div class="comments card-text">
+            <h4 class="mt-3">【コメント件数：<%= @game.game_comments.count %>】</h4>
+            <% @game.game_comments.each do |game_comment| %>
+              <div class="media border mb-3">
+                <div>
+                  <%= link_to user_path(game_comment.user.id) do %>
+                    <%= attachment_image_tag game_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"bd-placeholder-img align-self-center mx-3" %><br>
+                    <%= game_comment.user.name %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= game_comment.comment %>
+                  <br>
+                  <% if game_comment.user == current_user %>
+                    <%= link_to "コメント削除", game_game_comment_path(game_comment.game, game_comment), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？"  %>
+                  <% end %>
+                </div>
+              </div>  
+            <% end %>
+          </div>
+          <hr>
+          <div class="new-comment card-text">
+            <%= form_with(model:[@game, @game_comment], local: true) do |f| %>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">コメントする</label>
+                <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+              </div>
+              <%= f.submit "送信する", class:"btn btn-lg btn-info mt-2 float-right" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
