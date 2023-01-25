@@ -16,9 +16,14 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+body {
+  padding-top: 0;
+}
+
 .jumbotron {
   height: 630px;
-  background-image: url(sam-pak-X6QffKLwyoQ-unsplash.jpg);
+  background-image: url(game_back_ground.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
