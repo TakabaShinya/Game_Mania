@@ -2,11 +2,11 @@
   <p id="notice"><%= flash[:notice] %></p>
   <div class='container px-5 px-sm-0'>
     <% if @game.errors.any? %>
-      <%= @game.errors.count %>error prohibited this obj from being saved:
+      <%= @game.errors.count %>件のエラーにより、この投稿を保存できませんでした
       <ul>
-      <% @game.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @game.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     <% end %>
     <div class='row'>

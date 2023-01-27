@@ -17,17 +17,28 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
-  padding-top: 0;
+.jumbotron {
+  background: url("sam-pak-X6QffKLwyoQ-unsplash.jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.jumbotron {
-  height: 630px;
-  background-image: url(game_back_ground.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+.junbotron:before {
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
 }
 
 .game-item {

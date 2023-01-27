@@ -5,7 +5,7 @@
         <h5 class="text-dark bg-light py-4 mb-0">プロフィール編集</h5>
         <div class="form-body bg-light p-4">
           <% if @user.errors.any? %>
-            <%= @user.errors.count %>error prohibited this obj from being saved:
+            <%= @user.errors.count %>件のエラーにより、変更を保存できませんでした
             <ul>
               <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>

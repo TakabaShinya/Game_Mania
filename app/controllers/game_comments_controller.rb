@@ -3,8 +3,13 @@ class GameCommentsController < ApplicationController
     game = Game.find(params[:game_id])
     comment = current_user.game_comments.new(game_comment_params)
     comment.game_id = game.id
-    comment.save
-    redirect_to game_path(game)
+    if comment.save
+      flash[:notice] = "コメント投稿されました！"
+      redirect_to game_path(game)
+    else
+      flash[:notice] = "コメント内容を入力して下さい"
+      redirect_to game_path(game)
+    end
   end
   
   def destroy
