@@ -7,7 +7,7 @@ class GameCommentsController < ApplicationController
       flash[:notice] = "コメント投稿されました！"
       redirect_to game_path(game)
     else
-      flash[:notice] = "コメント内容を入力して下さい"
+      flash[:notice] = "エラーコメント内容を入力して下さい"
       redirect_to game_path(game)
     end
   end
