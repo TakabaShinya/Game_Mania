@@ -20,7 +20,7 @@
                 </div>
                 <span>
                   <%= link_to user_path(game.user.id) do %>
-                    <%= attachment_image_tag game.user, :profile_image, :fill, 30, 30, format: "jpeg", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag game.user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg" %>
                     By <%= game.user.name %> ｜
                   <% end %>
                 </span>
