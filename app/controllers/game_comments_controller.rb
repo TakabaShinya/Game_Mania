@@ -3,11 +3,14 @@ class GameCommentsController < ApplicationController
     game = Game.find(params[:game_id])
     comment = current_user.game_comments.new(game_comment_params)
     comment.game_id = game.id
-    if comment.save
+    if current_user.email == 'guest@example.com'
+      flash[:notice] = 'ゲストユーザーはコメントできません。'
+      redirect_to game_path(game)
+    elsif comment.save
       flash[:notice] = "コメント投稿されました！"
       redirect_to game_path(game)
     else
-      flash[:notice] = "エラーコメント内容を入力して下さい"
+      flash[:notice] = "エラー：コメント内容を入力して下さい"
       redirect_to game_path(game)
     end
   end

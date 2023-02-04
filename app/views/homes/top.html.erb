@@ -15,12 +15,24 @@
             </p>
           </div>
           <div class="btn-wrapper col-10 mx-auto">
-            <div class="row">
-              <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">ログイン</a>
-            </div>
-            <div class="row">
-              <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">ユーザー登録</a>
-            </div>
+            <% if user_signed_in? %>
+              <div class="row">
+                <a class="btn btn-info btn-sm btn-block mb-3" href="/users/sign_in">ログイン</a>
+              </div>
+              <div class="row">
+                <a class="btn btn-success btn-sm btn-block mb-3" href="/users/sign_up">ユーザー登録</a>
+              </div>
+            <% else %>
+              <div class="row">
+                <a class="btn btn-info btn-sm btn-block mb-3" href="/users/sign_in">ログイン</a>
+              </div>
+              <div class="row">
+                <a class="btn btn-success btn-sm btn-block mb-3" href="/users/sign_up">ユーザー登録</a>
+              </div>
+              <div class="row">
+                <a class="btn btn-primary btn-sm btn-block" data-method="post" href="/users/guest_sign_in">ゲストログイン（閲覧用）</a>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

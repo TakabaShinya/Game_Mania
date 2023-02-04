@@ -10,7 +10,10 @@ class GamesController < ApplicationController
     @games = Game.page(params[:page]).reverse_order
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    if @game.save
+    if @user.email == 'guest@example.com'
+      flash[:notice] = 'ゲストユーザーは投稿できません。'
+      redirect_to games_path
+    elsif @game.save
       flash[:notice] = "新規投稿されました！"
       redirect_to game_path(@game.id)
     else
