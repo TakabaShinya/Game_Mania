@@ -1,5 +1,5 @@
 <main>
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid mb-0">
     <p id="notice"><%= flash[:notice] %></p>
     <div class="container">
       <div class="row">
@@ -15,24 +15,15 @@
             </p>
           </div>
           <div class="btn-wrapper col-10 mx-auto">
-            <% if user_signed_in? %>
-              <div class="row">
-                <a class="btn btn-info btn-sm btn-block mb-3" href="/users/sign_in">ログイン</a>
-              </div>
-              <div class="row">
-                <a class="btn btn-success btn-sm btn-block mb-3" href="/users/sign_up">ユーザー登録</a>
-              </div>
-            <% else %>
-              <div class="row">
-                <a class="btn btn-info btn-sm btn-block mb-3" href="/users/sign_in">ログイン</a>
-              </div>
-              <div class="row">
-                <a class="btn btn-success btn-sm btn-block mb-3" href="/users/sign_up">ユーザー登録</a>
-              </div>
-              <div class="row">
-                <a class="btn btn-primary btn-sm btn-block" data-method="post" href="/users/guest_sign_in">ゲストログイン（閲覧用）</a>
-              </div>
-            <% end %>
+            <div class="row">
+              <a class="btn btn-info btn-sm btn-block mb-3" href="/users/sign_in">ログイン</a>
+            </div>
+            <div class="row">
+              <a class="btn btn-success btn-sm btn-block mb-3" href="/users/sign_up">ユーザー登録</a>
+            </div>
+            <div class="row">
+              <a class="btn btn-primary btn-sm btn-block" data-method="post" href="/users/guest_sign_in">ゲストログイン（閲覧用）</a>
+            </div>
           </div>
         </div>
       </div>

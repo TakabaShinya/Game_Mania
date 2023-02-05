@@ -6,7 +6,7 @@ class User < ApplicationRecord
   attachment :profile_image
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲスト"
+      user.name = "ゲストユーザー（閲覧専用）"
       user.password = SecureRandom.urlsafe_base64
       # user.confirmed at = Time.now
     end

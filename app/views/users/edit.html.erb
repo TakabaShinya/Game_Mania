@@ -1,7 +1,7 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid py-2 mb-0">
   <div class="container">
     <div class="row no-gutters">
-      <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 m-0">
         <h5 class="text-dark bg-light py-4 mb-0">プロフィール編集</h5>
         <div class="form-body bg-light p-4">
           <% if @user.errors.any? %>
@@ -33,6 +33,12 @@
               <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-info mt-5" %>
             </div>
           <% end %>
+          <hr>
+          <p>
+            ユーザー削除を希望の方は、
+            <br>下の「ユーザー削除ボタン」を押して下さい。
+          </p>
+          <%= link_to "ユーザー削除", user_path(@user.id), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に削除しますか？" %>
         </div>
       </div>
     </div>
