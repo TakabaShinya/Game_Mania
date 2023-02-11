@@ -26,7 +26,7 @@
           <div class="card-body pl-0 pb-0">
             <div class="game-body">
               【ゲーム説明】<br>
-              <%= @game.body %>
+              <%= safe_join(@game.body.split("\n"),tag(:br)) %>
             </div>
             <div class="game-body">
               <% if @game.user.id == current_user.id %>

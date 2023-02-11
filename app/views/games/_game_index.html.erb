@@ -16,7 +16,7 @@
               <div class="card-body pl-0 pb-0">
                 <div class="game-body">
                   【ゲーム説明】<br>
-                  <%= game.body %>
+                  <%= safe_join(game.body.split("\n"),tag(:br)) %>
                 </div>
                 <span>
                   <%= link_to user_path(game.user.id) do %>
@@ -45,3 +45,4 @@
         </div>
         <%= paginate games %>
        
+      
