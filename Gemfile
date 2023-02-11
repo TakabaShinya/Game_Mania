@@ -69,4 +69,4 @@ gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
-gem 'pg', group: :production
+gem 'mysql2', '>= 0.4.4', '< 0.6.0' , group: :production
