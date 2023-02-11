@@ -24,11 +24,11 @@
             </div>
           </div>
           <div class="card-body pl-0 pb-0">
-            <div class="game-body">
+            <div>
               【ゲーム説明】<br>
               <%= safe_join(@game.body.split("\n"),tag(:br)) %>
             </div>
-            <div class="game-body">
+            <div>
               <% if @game.user.id == current_user.id %>
                 <%= link_to "投稿削除", game_path(@game.id), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？" %>
               <% end %>
@@ -59,7 +59,7 @@
                   <% end %>
                 </div>
                 <div>
-                  <%= game_comment.comment %>
+                  <%= safe_join(game_comment.comment.split("\n"),tag(:br)) %>
                   <br>
                   <% if game_comment.user == current_user %>
                     <%= link_to "コメント削除", game_game_comment_path(game_comment.game, game_comment), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に消しますか？"  %>
