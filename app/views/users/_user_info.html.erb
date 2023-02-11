@@ -15,7 +15,7 @@
             </th>
             <th><%= user.introduction %></th>
           </tr>
-        </table>　 
+        </table>
         <div class='row'>
           <a class="btn btn-outline-secondary btn-block" href="/users/<%= user.id %>/edit">
             <i class="fas fa-user-cog"></i>
@@ -26,12 +26,14 @@
           <h5 class="text-dark py-4 mb-0">新規投稿フォーム</h5>
           <%= form_with model:game, local:true do |f| %>
             <div class="input-group my-3">
-              <label for="game_title">ゲーム名</label>
-              <%= f.text_field :title %>
+              <label for="game_title">ゲーム名<br>
+                <%= f.text_field :title %>
+              </label>
             </div>
             <div class="input-group my-3">
-              <label for="game_hard">ゲーム機種</label>
-              <%= f.select :hard,[["パソコン","パソコン"],["ファミリーコンピューター","ファミリーコンピューター"],["PCエンジン","PCエンジン"],["メガドライブ","メガドライブ"],["ゲームボーイ","ゲームボーイ"],["スーパーファミコン","スーパーファミコン"],["ゲームギア","ゲームギア"],["ネオジオ","ネオジオ"],["PlayStation","PlayStation"],["セガサターン","セガサターン"],["NINTENDO64","NINTENDO64"],["ドリームキャスト","ドリームキャスト"],["ネオジオポケット","ネオジオポケット"],["ワンダースワン","ワンダースワン"],["PlayStation2","PlayStation2"],["ゲームボーイアドバンス","ゲームボーイアドバンス"],["ニンテンドーゲームキューブ","ニンテンドーゲームキューブ"],["Xbox","Xbox"],["ニンテンドーDS","ニンテンドーDS"],["PlayStation Portable","PlayStation Portable"],["Wii","Wii"],["PlayStation3","PlayStation3"],["ニンテンドー3DS","ニンテンドー3DS"],["WiiU","WiiU"],["PlayStation Vita","PlayStation Vita"],["PlayStation4","PlayStation4"],["Nintendo Swich","Nintendo Swich"],["PlayStation5","PlayStation5"],["スマートフォン","スマートフォン"],["その他","その他"]], include_blank: "選択して下さい" %>
+              <label for="game_hard">ゲーム機種<br>
+                <%= f.select :hard,[["パソコン","パソコン"],["ファミリーコンピューター","ファミリーコンピューター"],["PCエンジン","PCエンジン"],["メガドライブ","メガドライブ"],["ゲームボーイ","ゲームボーイ"],["スーパーファミコン","スーパーファミコン"],["ゲームギア","ゲームギア"],["ネオジオ","ネオジオ"],["PlayStation","PlayStation"],["セガサターン","セガサターン"],["NINTENDO64","NINTENDO64"],["ドリームキャスト","ドリームキャスト"],["ネオジオポケット","ネオジオポケット"],["ワンダースワン","ワンダースワン"],["PlayStation2","PlayStation2"],["ゲームボーイアドバンス","ゲームボーイアドバンス"],["ニンテンドーゲームキューブ","ニンテンドーゲームキューブ"],["Xbox","Xbox"],["ニンテンドーDS","ニンテンドーDS"],["PlayStation Portable","PlayStation Portable"],["Wii","Wii"],["PlayStation3","PlayStation3"],["ニンテンドー3DS","ニンテンドー3DS"],["WiiU","WiiU"],["PlayStation Vita","PlayStation Vita"],["PlayStation4","PlayStation4"],["Nintendo Swich","Nintendo Swich"],["PlayStation5","PlayStation5"],["スマートフォン","スマートフォン"],["その他","その他"]], include_blank: "選択して下さい" %>
+              </label>
             </div>
             <div class="input-group my-3">
               <label>ゲーム画像
@@ -39,9 +41,10 @@
               </label>
             </div>
             <div class="input-group my-3">
-              <label for="game_body">ゲーム説明</label>
-                <%= f.text_area :body %>
-              </div>
+              <label for="input-group-text">ゲーム説明<br>
+                <%= f.text_area :body, size: "30x10" %>
+              </label>
+            </div>
             <div class="form-group">
               <%= f.submit "新規投稿", class:"btn btn-success" %>
             </div>
